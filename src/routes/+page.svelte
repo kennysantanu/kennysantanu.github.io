@@ -136,6 +136,57 @@
 					<div class="flex flex-col gap-3 pb-3">
 						<div
 							class="aspect-video w-full rounded-xl bg-cover bg-center bg-no-repeat"
+							style="background-image: url('{base}/ai-discord-bot-image.jpg');"
+						></div>
+						<div>
+							<p class="text-base leading-normal font-medium text-white">AI Discord Bot</p>
+							<p class="text-sm leading-normal font-normal text-[#a2abb3]">
+								This ongoing project serves as my experimental platform for integrating the latest
+								advancements in open-source and self-hosted artificial intelligence. Developed in
+								Python using discord.py and the Discord API, the Discord bot implements many AI
+								functionalities, including a large language model (LLM) powered chatbot, Stable
+								Diffusion image generation, AI-powered text-to-speech, and many more experimental
+								features. The project is continuously updated as I explore and implement new
+								technologies, making it a dynamic showcase of my skills in AI integration and
+								Discord bot development.
+							</p>
+						</div>
+						<div class="flex flex-wrap gap-3 pr-4">
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/python-icon.png" alt="Python Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Python</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/pytorch-icon.png" alt="Pytorch Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Pytorch</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/ollama-icon.png" alt="Ollama Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Ollama</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/discord-icon.png" alt="Discord Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Discord</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/docker-icon.png" alt="Docker Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Docker</p>
+							</div>
+						</div>
+					</div>
+					<div class="flex flex-col gap-3 pb-3">
+						<div
+							class="aspect-video w-full rounded-xl bg-cover bg-center bg-no-repeat"
 							style="background-image: url('{base}/portfolio-image.jpg');"
 						></div>
 						<div>
@@ -183,7 +234,7 @@
 								<p class="text-sm leading-normal font-medium text-white">Tailwind CSS</p>
 							</div>
 						</div>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</main>
