@@ -187,6 +187,61 @@
 					<div class="flex flex-col gap-3 pb-3">
 						<div
 							class="aspect-video w-full rounded-xl bg-cover bg-center bg-no-repeat"
+							style="background-image: url('{base}/sam2-image.jpg');"
+						></div>
+						<div>
+							<p class="text-base leading-normal font-medium text-white">
+								SAM2 Image Segmentation & Replacement
+							</p>
+							<p class="text-sm leading-normal font-normal text-[#a2abb3]">
+								This proof of concept project is a Python web app that lets users interactively
+								segment and replace regions in images. Built with Gradio and powered by Meta's
+								Segment Anything Model 2 (SAM2), users can upload images, draw a rough mask, and
+								have the app refine it for precise segmentation and seamless region replacement. The
+								project demonstrates skills in Python, deep learning model integration, computer
+								vision (OpenCV), and rapid UI development with Gradio.
+							</p>
+						</div>
+						<div class="flex flex-wrap gap-3 pr-4">
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/python-icon.png" alt="Python Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Python</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/gradio-icon.png" alt="Gradio Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Gradio</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/opencv-icon.png" alt="OpenCV Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">OpenCV</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img src="{base}/meta-icon.png" alt="Meta Icon" class="h-7 w-7 p-1" />
+								<p class="text-sm leading-normal font-medium text-white">Meta AI</p>
+							</div>
+							<div
+								class="flex h-8 shrink-0 items-center justify-center space-x-1 rounded-full bg-[#2c3135] pr-4 pl-4"
+							>
+								<img
+									src="{base}/huggingface-icon.png"
+									alt="Hugging Face Icon"
+									class="h-7 w-7 p-1"
+								/>
+								<p class="text-sm leading-normal font-medium text-white">Hugging Face</p>
+							</div>
+						</div>
+					</div>
+					<div class="flex flex-col gap-3 pb-3">
+						<div
+							class="aspect-video w-full rounded-xl bg-cover bg-center bg-no-repeat"
 							style="background-image: url('{base}/portfolio-image.jpg');"
 						></div>
 						<div>
