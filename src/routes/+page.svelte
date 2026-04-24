@@ -47,7 +47,7 @@
 									Kenny Santanu
 								</p>
 								<p class="text-center text-base leading-normal font-normal text-[#a2abb3]">
-									Software Engineer | IT Consultant
+									Healthcare IT Project Manager | PMP
 								</p>
 								<p class="text-center text-base leading-normal font-normal text-[#a2abb3]">
 									Based in Los Angeles, CA
@@ -57,10 +57,7 @@
 					</div>
 				</div>
 				<p class="px-4 pt-1 pb-3 text-center text-base leading-normal font-normal text-white">
-					I'm a Software Engineer and IT Consultant with a passion for building innovative solutions
-					that address real-world challenges. With a strong foundation in software development and
-					IT consulting, I combine technical expertise with a passion for problem-solving to deliver
-					impactful applications and drive business success.
+					I'm a PMP-certified Healthcare IT Project Manager with experience in healthcare revenue cycle operations, EHR implementation, and AI-powered solutions. Currently serving as Director of the Website at PMI Los Angeles. Tell me your problem. I'll handle the technical solution.
 				</p>
 				<div class="flex justify-center px-4 py-3">
 					<a
