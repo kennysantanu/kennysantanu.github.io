@@ -226,17 +226,19 @@
 				style="background-image: url('{base}/picture.jpg');"
 			></div>
 			<div>
-				<div class="mb-3 flex items-center gap-2 text-sm text-[#94a3b8]">
-					<MapPin size={14} />
-					<span>Los Angeles, CA</span>
-					<span class="mx-2 text-[#475569]">•</span>
+				<div class="mb-3 flex flex-col gap-1 text-sm text-[#94a3b8] min-[425px]:flex-row min-[425px]:items-center min-[425px]:gap-2">
+					<div class="flex items-center gap-2">
+						<MapPin size={14} />
+						<span>Los Angeles, CA</span>
+					</div>
+					<span class="hidden min-[425px]:inline mx-2 text-[#475569]">•</span>
 					<span>Open to remote and hybrid roles</span>
 				</div>
 				<h1 class="text-4xl leading-tight font-extrabold tracking-tight md:text-5xl">
 					Kenny Santanu
 				</h1>
 				<p class="mt-1 text-xl font-semibold text-[#7dd3fc] md:text-2xl">
-					Healthcare IT Project Manager <span class="text-[#475569]">·</span> PMP
+					Healthcare IT Project Manager <span class="text-[#475569]">|</span> PMP
 				</p>
 				<p class="mt-4 max-w-2xl text-lg text-[#cbd5e1] md:text-xl">
 					I turn broken clinical and revenue cycle workflows into systems that work. Eight years
