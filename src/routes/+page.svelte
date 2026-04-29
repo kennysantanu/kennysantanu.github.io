@@ -109,6 +109,15 @@
 			role: 'Sole developer.',
 			image: 'sam2-image.jpg',
 			tech: ['Python', 'Gradio', 'OpenCV', 'Meta AI', 'Hugging Face']
+		},
+		{
+			title: 'YOLOv8 Traffic Sign Detection from Scratch',
+			outcome: '3,078 labeled images. Real dashcam footage. Trained without pre-trained weights.',
+			description:
+				'A computer vision model built to detect and classify 17 categories of California traffic signs and signals, including stop signs, speed limits, and traffic light states. Collected hours of dashcam footage across seven SoCal cities, annotated every image manually in Roboflow, and trained YOLOv8 from scratch across three dataset iterations. The core finding: scaling data volume alone does not close the performance gap. Labeling consistency and architecture selection matter more. A final experiment with COCO pre-trained weights reached approximately 70% mAP.',
+			role: 'Co-researcher and primary dataset contributor. Personally annotated 1,344 images across all three dataset versions. Co-designed the training pipeline, ran local experiments on an RTX 3090, and co-authored the published research paper.',
+			image: '',
+			tech: ['Python', 'PyTorch', 'YOLOv8', 'Roboflow', 'Google Colab', 'Jupyter Notebook', 'Computer Vision']
 		}
 	];
 
