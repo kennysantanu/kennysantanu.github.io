@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 	import Linkedin from '@lucide/svelte/icons/linkedin';
 	import Github from '@lucide/svelte/icons/github';
 	import MapPin from '@lucide/svelte/icons/map-pin';
@@ -7,6 +8,24 @@
 	import X from '@lucide/svelte/icons/x';
 
 	let mobileMenuOpen = $state(false);
+	let activeSection = $state('');
+
+	onMount(() => {
+		const sections = document.querySelectorAll<HTMLElement>('section[id]');
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						activeSection = entry.target.id;
+					}
+				}
+			},
+			{ rootMargin: '0px 0px -70% 0px' }
+		);
+		sections.forEach((s) => observer.observe(s));
+		return () => observer.disconnect();
+	});
+
 	const navLinks = [
 		{ href: '#about', label: 'About' },
 		{ href: '#experience', label: 'Experience' },
@@ -14,6 +33,79 @@
 		{ href: '#skills', label: 'Skills' },
 		{ href: '#contact', label: 'Contact' }
 	];
+
+	const seo = {
+		title: 'Kenny Santanu | Healthcare IT Project Manager | EHR & Revenue Cycle',
+		canonicalUrl: 'https://kennysantanu.com/',
+		description:
+			'PMP-certified Healthcare IT Project Manager in Los Angeles specializing in EHR implementation, revenue cycle automation, clinical AI workflows, and healthcare operations.',
+		socialDescription:
+			'PMP-certified Healthcare IT Project Manager with 8 years in healthcare operations, EHR implementation, revenue cycle automation, and clinical AI workflows.',
+		twitterDescription:
+			'PMP-certified Healthcare IT Project Manager focused on EHR implementation, revenue cycle automation, and clinical AI workflows.',
+		imageUrl: 'https://kennysantanu.com/picture.jpg'
+	};
+
+	const profileSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'ProfilePage',
+		'@id': 'https://kennysantanu.com/#profile',
+		url: seo.canonicalUrl,
+		name: 'Kenny Santanu | Healthcare IT Project Manager',
+		dateModified: '2026-05-07',
+		mainEntity: {
+			'@id': 'https://kennysantanu.com/#person',
+			'@type': 'Person',
+			name: 'Kenny Santanu',
+			alternateName: 'kennysantanu',
+			description: seo.description,
+			jobTitle: [
+				'Healthcare IT Project Manager',
+				'EHR Implementation Project Manager',
+				'Revenue Cycle Automation Lead'
+			],
+			url: seo.canonicalUrl,
+			image: seo.imageUrl,
+			sameAs: [
+				'https://www.linkedin.com/in/kennysantanu/',
+				'https://github.com/kennysantanu'
+			],
+			address: {
+				'@type': 'PostalAddress',
+				addressLocality: 'Los Angeles',
+				addressRegion: 'CA',
+				addressCountry: 'US'
+			},
+			alumniOf: [
+				{ '@type': 'CollegeOrUniversity', name: 'Western Governors University' },
+				{
+					'@type': 'CollegeOrUniversity',
+					name: 'California State Polytechnic University, Pomona'
+				}
+			],
+			hasCredential: [
+				{
+					'@type': 'EducationalOccupationalCredential',
+					credentialCategory: 'certification',
+					name: 'Project Management Professional (PMP)'
+				},
+				{
+					'@type': 'EducationalOccupationalCredential',
+					credentialCategory: 'certification',
+					name: 'Certified Associate in Project Management (CAPM)'
+				}
+			],
+			knowsAbout: [
+				'Healthcare IT',
+				'EHR implementation',
+				'Revenue cycle management',
+				'Clinical AI workflows',
+				'Healthcare operations',
+				'Process automation',
+				'Project management'
+			]
+		}
+	};
 	import Award from '@lucide/svelte/icons/award';
 	import GraduationCap from '@lucide/svelte/icons/graduation-cap';
 	import Briefcase from '@lucide/svelte/icons/briefcase';
@@ -149,7 +241,20 @@
 </script>
 
 <svelte:head>
-	<title>Kenny Santanu - Healthcare IT Project Manager</title>
+	<title>{seo.title}</title>
+	<link rel="canonical" href={seo.canonicalUrl} />
+	<meta name="description" content={seo.description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={seo.title} />
+	<meta property="og:description" content={seo.socialDescription} />
+	<meta property="og:url" content={seo.canonicalUrl} />
+	<meta property="og:image" content={seo.imageUrl} />
+	<meta property="og:site_name" content="Kenny Santanu" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={seo.title} />
+	<meta name="twitter:description" content={seo.twitterDescription} />
+	<meta name="twitter:image" content={seo.imageUrl} />
+	{@html `<script type="application/ld+json">${JSON.stringify(profileSchema)}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-[#1a1d20] text-white antialiased">
@@ -162,6 +267,8 @@
 				<img
 					src="{base}/picture.jpg"
 					alt="Kenny Santanu"
+					width="36"
+					height="36"
 					class="size-9 rounded-full object-cover"
 				/>
 				<span class="text-base font-bold tracking-tight">Kenny Santanu</span>
@@ -169,7 +276,11 @@
 			<!-- Desktop nav -->
 			<nav class="hidden gap-7 text-sm font-medium text-[#cbd5e1] md:flex">
 				{#each navLinks as link}
-					<a href={link.href} class="hover:text-white">{link.label}</a>
+					<a
+						href={link.href}
+						class="transition-colors hover:text-white"
+						class:text-white={activeSection === link.href.slice(1)}
+					>{link.label}</a>
 				{/each}
 			</nav>
 			<!-- Desktop LinkedIn button -->
@@ -186,6 +297,7 @@
 			<button
 				class="flex items-center justify-center rounded-lg p-2 text-[#cbd5e1] hover:bg-[#2c3135] hover:text-white md:hidden"
 				aria-label="Toggle menu"
+				aria-expanded={mobileMenuOpen}
 				onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
 			>
 				{#if mobileMenuOpen}
@@ -230,10 +342,11 @@
 	<main id="top" class="mx-auto max-w-6xl px-4 md:px-8">
 		<!-- Hero -->
 		<section class="grid gap-8 py-14 md:grid-cols-[auto_1fr] md:items-center md:gap-12 md:py-20">
-			<div
-				class="aspect-square w-40 self-center rounded-full bg-cover bg-center shadow-xl ring-4 ring-[#2c3135] md:w-56"
-				style="background-image: url('{base}/picture.jpg');"
-			></div>
+			<img
+				src="{base}/picture.jpg"
+				alt="Kenny Santanu"
+				class="aspect-square w-40 self-center rounded-full object-cover shadow-xl ring-4 ring-[#2c3135] md:w-56"
+			/>
 			<div>
 				<div class="mb-3 flex flex-col gap-1 text-sm text-[#94a3b8] min-[425px]:flex-row min-[425px]:items-center min-[425px]:gap-2">
 					<div class="flex items-center gap-2">
@@ -247,7 +360,7 @@
 					Kenny Santanu
 				</h1>
 				<p class="mt-1 text-xl font-semibold text-[#7dd3fc] md:text-2xl">
-					Healthcare IT Project Manager <span class="text-[#475569]">|</span> PMP
+					Healthcare IT Project Manager <span class="text-[#475569]">|</span> EHR and Revenue Cycle
 				</p>
 				<p class="mt-4 max-w-2xl text-lg text-[#cbd5e1] md:text-xl">
 					I turn broken clinical and revenue cycle workflows into systems that work. Eight years
@@ -280,7 +393,7 @@
 		</section>
 
 		<!-- Impact strip -->
-		<section class="mb-16 grid gap-3 rounded-2xl border border-[#2c3135] bg-[#1e2124] p-6 md:grid-cols-4 md:p-8">
+		<section class="mb-16 grid gap-3 rounded-2xl border border-[#2c3135] bg-[#1e2124] p-6 sm:grid-cols-2 md:grid-cols-4 md:p-8">
 			{#each impact as item}
 				<div class="flex flex-col">
 					<div class="text-3xl font-extrabold tracking-tight text-[#7dd3fc] md:text-4xl">
@@ -328,7 +441,7 @@
 				<Award size={16} />
 				Credentials
 			</div>
-			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+			<div class="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
 				{#each credentials as cred}
 					<div class="rounded-xl border border-[#2c3135] bg-[#1e2124] p-5">
 						<div class="text-2xl font-extrabold text-white">{cred.title}</div>
@@ -385,10 +498,11 @@
 				{#each projects as project}
 					<article class="flex flex-col overflow-hidden rounded-2xl border border-[#2c3135] bg-[#1e2124]">
 						{#if project.image}
-							<div
-								class="aspect-video w-full bg-cover bg-center"
-								style="background-image: url('{base}/{project.image}');"
-							></div>
+						<img
+							src="{base}/{project.image}"
+							alt={project.title}
+							class="aspect-video w-full object-cover"
+						/>
 						{:else}
 							<div
 								class="flex aspect-video w-full items-center justify-center bg-gradient-to-br from-[#0c4a6e] via-[#1e2124] to-[#1e2124]"
