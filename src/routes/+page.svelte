@@ -341,14 +341,14 @@
 
 	<main id="top" class="mx-auto max-w-6xl px-4 md:px-8">
 		<!-- Hero -->
-		<section class="grid gap-8 py-14 md:grid-cols-[auto_1fr] md:items-center md:gap-12 md:py-20">
+		<section class="grid gap-6 py-12 md:grid-cols-[auto_1fr] md:items-center md:gap-12 md:py-20">
 			<img
 				src="{base}/picture.jpg"
 				alt="Kenny Santanu"
-				class="aspect-square w-40 self-center rounded-full object-cover shadow-xl ring-4 ring-[#2c3135] md:w-56"
+				class="mx-auto aspect-square w-44 self-center rounded-full object-cover shadow-xl ring-4 ring-[#2c3135] md:mx-0 md:w-56"
 			/>
-			<div>
-				<div class="mb-3 flex flex-col gap-1 text-sm text-[#94a3b8] min-[425px]:flex-row min-[425px]:items-center min-[425px]:gap-2">
+			<div class="text-center md:text-left">
+				<div class="mb-3 flex flex-col items-center gap-1 text-sm text-[#94a3b8] min-[425px]:flex-row min-[425px]:justify-center min-[425px]:gap-2 md:items-start md:justify-start">
 					<div class="flex items-center gap-2">
 						<MapPin size={14} />
 						<span>Los Angeles, CA</span>
@@ -369,7 +369,7 @@
 				<p class="mt-4 max-w-2xl text-base text-[#94a3b8]">
 					Tell me your problem. I will find the technology and build the solution.
 				</p>
-				<div class="mt-7 flex flex-wrap gap-3">
+				<div class="mt-7 flex flex-wrap justify-center gap-3 md:justify-start">
 					<a
 						href="https://www.linkedin.com/in/kennysantanu/"
 						target="_blank"
