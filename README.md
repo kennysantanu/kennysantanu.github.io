@@ -57,7 +57,25 @@ npm run preview
 
 ## Deployment
 
-The site is designed for static hosting (e.g., GitHub Pages, Vercel, Netlify). After building, deploy the contents of the `build/` directory.
+The site is built with `@sveltejs/adapter-static` and outputs fully pre-rendered static files to `build/`, making it compatible with GitHub Pages, Vercel, Netlify, and any static host.
+
+### Automatic (GitHub Actions)
+
+Every push to `main` triggers the workflow in `.github/workflows/deploy.yml`, which:
+
+1. Installs dependencies and runs `npm run build`.
+2. Copies `CNAME` and `.nojekyll` into the build output.
+3. Force-pushes the contents of `build/` to the `pages-main` branch.
+
+In GitHub **Settings → Pages**, set the source to `Deploy from a branch`, pick `pages-main`, and folder `/ (root)`. The live site updates automatically on every push.
+
+### Manual
+
+```bash
+npm run build
+```
+
+Then deploy the contents of the `build/` directory to any static host.
 
 ## Credits
 

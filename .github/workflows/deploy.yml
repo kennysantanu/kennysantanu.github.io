@@ -1,11 +1,15 @@
-name: Deploy to GitHub Pages
+name: Publish pages-main
 
 on:
   push:
-    branches: 'main'
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
-  build_site:
+  build_and_publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,31 +24,24 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: build
+      - name: Build site
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+          BASE_PATH: ''
+        run: npm run build
+
+      - name: Copy GitHub Pages files
         run: |
-          npm run build
+          if [ -f CNAME ]; then
+            cp CNAME build/CNAME
+          fi
+          if [ -f .nojekyll ]; then
+            cp .nojekyll build/.nojekyll
+          fi
 
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to pages-main
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          # this should match the `pages` option in your adapter-static options
-          path: 'build/'
-
-  deploy:
-    needs: build_site
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: pages-main
+          publish_dir: ./build
+          force_orphan: true
